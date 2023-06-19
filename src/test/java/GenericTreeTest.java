@@ -20,6 +20,7 @@ class GenericTreeTest {
         genericTree.add(2, 3);
         genericTree.add(1, 2);
         genericTree.add(0, 2);
+        genericTree.add(null, 4);
     }
 
     @Test
@@ -58,7 +59,7 @@ class GenericTreeTest {
     @Test
     @Order(6)
     void size() {
-        assertEquals(6, genericTree.size());
+        assertEquals(7, genericTree.size());
     }
 
     @Test

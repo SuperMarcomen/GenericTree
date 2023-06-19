@@ -4,6 +4,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+/**
+ * A generic tree class
+ * @param <T> the type of the tree
+ * @author xxx
+ * @version 1.0
+ */
 public class GenericTree<T> implements Tree<T> {
 
     public static final String EMPTY_TREE = "The tree is empty!";
@@ -117,6 +123,7 @@ public class GenericTree<T> implements Tree<T> {
     }
 
     private Node<T> getNode(T element) {
+        if (element == null) return null;
         for (Node<T> node : nodes) {
             if (!element.equals(node.getContent())) continue;
             return node;
