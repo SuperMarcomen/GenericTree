@@ -11,8 +11,10 @@ public class GenericTree<T> implements Tree<T> {
     public static final String NOT_A_LEAF = "This node is not a leaf since it has children!";
     private final LinkedList<Node<T>> nodes;
 
-    public GenericTree() {
+    public GenericTree(T root) {
         this.nodes = new LinkedList<>();
+        Node<T> node = new Node<>(root, null);
+        nodes.add(node);
     }
 
     @Override
@@ -85,7 +87,10 @@ public class GenericTree<T> implements Tree<T> {
         for (Node<T> node : nodes) {
             if (!rootNode.isContainedInSubTree(node)) continue;
             subtreeElements.add(node.getContent());
-            nodes.removeFirstOccurrence(node);
+        }
+
+        for (T subtreeElement : subtreeElements) {
+            nodes.removeFirstOccurrence(getNode(subtreeElement));
         }
 
         // in case the root node is the root of the whole tree, the parent is null
@@ -107,7 +112,8 @@ public class GenericTree<T> implements Tree<T> {
 
     @Override
     public int height() {
-        return 0;
+        if (nodes.isEmpty()) return -1;
+        return nodes.get(0).getHeight();
     }
 
     private Node<T> getNode(T element) {

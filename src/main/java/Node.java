@@ -22,9 +22,19 @@ public class Node<T> {
         return parent;
     }
 
+    public int getHeight() {
+        int height = 1;
+        int highestChild = 0;
+        for (Node<T> child : children) {
+            int childHeight = child.getHeight();
+            if (childHeight > highestChild) highestChild = childHeight;
+        }
+        return height + highestChild;
+    }
+
     public boolean isContainedInSubTree(Node<T> element) {
         for (Node<T> child : children) {
-            if (child.isContainedInSubTree(child)) return true;
+            if (child.isContainedInSubTree(element)) return true;
         }
         return element.equals(this);
     }
