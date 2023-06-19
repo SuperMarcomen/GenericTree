@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,6 +39,8 @@ class GenericTreeTest {
 
         children = List.of(2);
         assertEquals(children, genericTree.getChildren(3));
+
+        assertEquals(Collections.emptyList(), genericTree.getChildren(null));
     }
 
     @Test
