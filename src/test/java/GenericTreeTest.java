@@ -53,13 +53,15 @@ class GenericTreeTest {
 
     @Test
     @Order(5)
-    void removeLeaf() {
+    void size() {
+        assertEquals(7, genericTree.size());
     }
 
     @Test
     @Order(6)
-    void size() {
-        assertEquals(7, genericTree.size());
+    void removeLeaf() {
+        genericTree.removeLeaf(null);
+        assertEquals(6, genericTree.size());
     }
 
     @Test

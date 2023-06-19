@@ -123,9 +123,9 @@ public class GenericTree<T> implements Tree<T> {
     }
 
     private Node<T> getNode(T element) {
-        if (element == null) return null;
         for (Node<T> node : nodes) {
-            if (!element.equals(node.getContent())) continue;
+            if (node.getContent() == null && element == null) return node;
+            if (!node.getContent().equals(element)) continue;
             return node;
         }
         return null;
